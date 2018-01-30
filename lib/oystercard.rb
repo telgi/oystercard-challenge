@@ -9,7 +9,11 @@ class OysterCard
   end
 
   def top_up(total)
-    raise "#{DEFAULT_MAXIMUM} Please only top-up £90 or below" if @balance > DEFAULT_MAXIMUM
+    raise "Max balance is #{DEFAULT_MAXIMUM}. Top-up £90 or less" if (@balance + total) > DEFAULT_MAXIMUM
     @balance += total
+  end
+
+  def deduct(total)
+    @balance -= total
   end
 end
